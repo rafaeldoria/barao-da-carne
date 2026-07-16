@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.env.*
+*.local
+barao-desktop.png
+barao-desktop-hero*.png
+barao-hero-padding-check.png
+barao-logo-*-check.png
+barao-logo-section*-check.png
+barao-mobile.png
+barao-transparent-logo*-check.png

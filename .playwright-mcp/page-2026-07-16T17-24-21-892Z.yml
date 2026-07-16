@@ -1,0 +1,223 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Barão da Carne - início" [ref=e4] [cursor=pointer]:
+      - /url: "#top"
+      - img "Logo Barão da Carne" [ref=e5]
+      - generic [ref=e6]: Barão da Carne
+    - navigation "Navegação principal":
+      - link "Solução":
+        - /url: "#solucao"
+      - link "Benefícios":
+        - /url: "#beneficios"
+      - link "Como funciona":
+        - /url: "#como-funciona"
+      - link "Depoimentos":
+        - /url: "#depoimentos"
+      - link "FAQ":
+        - /url: "#faq"
+      - link "Solicitar orçamento":
+        - /url: "#orcamento"
+    - button "Abrir menu" [ref=e7] [cursor=pointer]
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: Churrasco e buffet para eventos
+        - heading "Seu evento com churrasco de verdade, sem preocupação na cozinha." [level=1] [ref=e15]
+        - paragraph [ref=e16]: O Barão da Carne prepara carnes, acompanhamentos e serviço para festas, confraternizações e encontros especiais com organização do início ao fim.
+        - generic [ref=e17]:
+          - link "Solicitar orçamento" [ref=e18] [cursor=pointer]:
+            - /url: "#orcamento"
+          - link "Ver como funciona" [ref=e19] [cursor=pointer]:
+            - /url: "#como-funciona"
+        - generic "Prova social pendente de dados reais" [ref=e20]:
+          - generic [ref=e21]:
+            - strong [ref=e22]: Dados reais a inserir
+            - generic [ref=e23]: Eventos atendidos, avaliações e cidades
+          - generic "Avaliação placeholder" [ref=e24]
+      - generic [ref=e35]:
+        - img "Churrasco com carnes assadas e acompanhamentos" [ref=e36]
+        - generic [ref=e37]: Buffet completo para celebrar com calma
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e44]: Problema e solução
+        - heading "A festa não precisa virar uma lista infinita de preocupações." [level=2] [ref=e45]
+        - paragraph [ref=e46]: O serviço foi pensado para quem quer receber bem, servir comida de qualidade e continuar presente no próprio evento.
+      - generic [ref=e47]:
+        - article [ref=e48]:
+          - heading "Falta tempo para organizar tudo" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Você escolhe o evento. A equipe cuida do preparo, montagem e ritmo do serviço para que a festa aconteça com tranquilidade.
+        - article [ref=e55]:
+          - heading "Medo de faltar comida ou sobrar demais" [level=3] [ref=e61]
+          - paragraph [ref=e62]: O cardápio é pensado conforme quantidade de convidados, perfil da celebração e tempo de duração.
+        - article [ref=e63]:
+          - heading "Preocupação com qualidade e atendimento" [level=3] [ref=e68]
+          - paragraph [ref=e69]: Carnes, acompanhamentos e operação seguem um planejamento claro para entregar uma experiência consistente.
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]: Benefícios
+        - heading "Mais tempo com os convidados. Menos improviso nos bastidores." [level=2] [ref=e74]
+        - paragraph [ref=e75]: "Churrasco bem planejado ajuda o evento a fluir: a comida chega no tempo certo, o buffet fica organizado e você não precisa coordenar cada detalhe."
+      - generic [ref=e76]:
+        - generic [ref=e77]: Evento mais leve para quem recebe
+        - generic [ref=e81]: Churrasco servido no ponto certo
+        - generic [ref=e85]: Buffet completo com acompanhamentos
+        - generic [ref=e89]: Equipe preparada para festas e confraternizações
+        - generic [ref=e93]: Orçamento ajustado ao tamanho do evento
+        - generic [ref=e97]: Apresentação bonita, limpa e organizada
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]: Como funciona
+        - heading "Da primeira conversa ao último prato servido." [level=2] [ref=e104]
+        - paragraph [ref=e105]: Um processo simples para transformar as informações do seu evento em uma proposta clara.
+      - generic [ref=e106]:
+        - article [ref=e107]:
+          - generic [ref=e108]: "01"
+          - heading "Conte sobre o evento" [level=3] [ref=e111]
+          - paragraph [ref=e112]: Número de convidados, local, data, horário e estilo de celebração.
+        - article [ref=e113]:
+          - generic [ref=e114]: "02"
+          - heading "Monte o cardápio" [level=3] [ref=e118]
+          - paragraph [ref=e119]: Cortes, acompanhamentos e serviço são definidos de acordo com a ocasião.
+        - article [ref=e120]:
+          - generic [ref=e121]: "03"
+          - heading "Reserve a data" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Combinamos os detalhes finais e alinhamos a chegada da equipe.
+        - article [ref=e127]:
+          - generic [ref=e128]: "04"
+          - heading "Aproveite a festa" [level=3] [ref=e131]
+          - paragraph [ref=e132]: O churrasco acontece no evento com preparo, buffet e atendimento no fluxo combinado.
+    - generic [ref=e134]:
+      - img "Mesa de churrasco com cortes e acompanhamentos" [ref=e136]
+      - generic [ref=e137]:
+        - generic [ref=e138]: Diferenciais
+        - heading "Um buffet com cara de evento bem cuidado." [level=2] [ref=e139]
+        - paragraph [ref=e140]: A proposta combina sabor, montagem e operação para que o churrasco seja lembrado pelo convidado e simples para quem contrata.
+        - generic [ref=e141]:
+          - article [ref=e142]:
+            - heading "Churrasco com presença" [level=3] [ref=e146]
+            - paragraph [ref=e147]: Uma experiência que vira parte da festa, não apenas um item de alimentação.
+          - article [ref=e148]:
+            - heading "Buffet completo" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Carnes, guarnições e montagem pensadas para servir bem diferentes perfis de convidados.
+          - article [ref=e157]:
+            - heading "Atendimento consultivo" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Você recebe orientação para escolher quantidades, formato e cardápio sem complicação.
+          - article [ref=e166]:
+            - heading "Visual premium" [level=3] [ref=e170]
+            - paragraph [ref=e171]: Apresentação sóbria e elegante, adequada para encontros familiares, empresas e celebrações.
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - generic [ref=e174]: Prova social
+        - heading "Depoimentos reais vão dar o peso final para a decisão." [level=2] [ref=e175]
+        - paragraph [ref=e176]: Os textos abaixo são placeholders identificados. Substitua por avaliações autênticas antes da publicação.
+      - generic [ref=e177]:
+        - article [ref=e178]:
+          - generic "Avaliação placeholder de cinco estrelas" [ref=e179]
+          - paragraph [ref=e190]: "\"Depoimento real a inserir. Use este espaço para uma avaliação curta sobre pontualidade, qualidade das carnes e atendimento no evento.\""
+          - generic [ref=e191]:
+            - generic [ref=e192]: "N"
+            - generic [ref=e193]:
+              - strong [ref=e194]: Nome do cliente
+              - text: Cargo ou ocasião - Placeholder
+        - article [ref=e195]:
+          - generic "Avaliação placeholder de cinco estrelas" [ref=e196]
+          - paragraph [ref=e207]: "\"Depoimento real a inserir. O ideal é citar o tipo de evento e o que ficou mais fácil para quem contratou.\""
+          - generic [ref=e208]:
+            - generic [ref=e209]: "N"
+            - generic [ref=e210]:
+              - strong [ref=e211]: Nome do cliente
+              - text: Empresa ou festa - Placeholder
+        - article [ref=e212]:
+          - generic "Avaliação placeholder de cinco estrelas" [ref=e213]
+          - paragraph [ref=e224]: "\"Depoimento real a inserir. Uma frase específica sobre sabor, organização e experiência ajuda muito na conversão.\""
+          - generic [ref=e225]:
+            - generic [ref=e226]: "N"
+            - generic [ref=e227]:
+              - strong [ref=e228]: Nome do cliente
+              - text: Confraternização - Placeholder
+    - generic [ref=e229]:
+      - generic [ref=e230]:
+        - generic [ref=e231]: Perguntas frequentes
+        - heading "Respostas para decidir com mais segurança." [level=2] [ref=e232]
+        - paragraph [ref=e233]: As principais dúvidas antes de pedir um orçamento para churrasco e buffet em eventos.
+      - generic [ref=e234]:
+        - article [ref=e235]:
+          - button "O Barão da Carne atende quais tipos de evento?" [expanded] [ref=e236] [cursor=pointer]
+          - paragraph [ref=e241]: Festas de aniversário, confraternizações, eventos corporativos, encontros familiares e celebrações em geral. O formato é ajustado ao local, horário e quantidade de pessoas.
+        - article [ref=e242]:
+          - button "O buffet inclui acompanhamentos?" [ref=e243] [cursor=pointer]
+        - article [ref=e247]:
+          - button "Com quanto tempo devo solicitar orçamento?" [ref=e248] [cursor=pointer]
+        - article [ref=e252]:
+          - button "Vocês levam equipe para preparar e servir?" [ref=e253] [cursor=pointer]
+        - article [ref=e257]:
+          - button "Como o orçamento é calculado?" [ref=e258] [cursor=pointer]
+    - generic [ref=e263]:
+      - generic [ref=e264]: Agenda e orçamento
+      - heading "Quer servir um churrasco completo sem assumir a operação da festa?" [level=2] [ref=e265]
+      - paragraph [ref=e266]: Envie os dados do evento e receba uma proposta alinhada ao número de convidados, cardápio desejado e estrutura do local.
+      - link "Solicitar orçamento" [ref=e267] [cursor=pointer]:
+        - /url: "#orcamento"
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - generic [ref=e271]: Solicitar orçamento
+        - heading "Conte o básico do evento para receber uma proposta mais precisa." [level=2] [ref=e272]
+        - paragraph [ref=e273]: "Quanto mais contexto, melhor o retorno: tipo de evento, convidados, data provável e observações sobre local ou cardápio."
+        - generic [ref=e274]:
+          - link "Telefone a substituir" [ref=e275] [cursor=pointer]:
+            - /url: tel:+5500000000000
+          - link "E-mail a substituir" [ref=e279] [cursor=pointer]:
+            - /url: mailto:contato@baraodacarne.com.br
+          - generic [ref=e284]: Cidade/região de atendimento a informar
+      - generic [ref=e288]:
+        - generic [ref=e289]:
+          - generic [ref=e290]: Nome
+          - textbox "Nome" [ref=e291]:
+            - /placeholder: Seu nome
+        - generic [ref=e292]:
+          - generic [ref=e293]: Telefone/WhatsApp
+          - textbox "Telefone/WhatsApp" [ref=e294]:
+            - /placeholder: (00) 00000-0000
+        - generic [ref=e295]:
+          - generic [ref=e296]: Tipo de evento
+          - combobox "Tipo de evento" [ref=e297]:
+            - option "Selecione" [selected]
+            - option "Aniversário"
+            - option "Confraternização"
+            - option "Evento corporativo"
+            - option "Casamento ou noivado"
+            - option "Outro"
+        - generic [ref=e298]:
+          - generic [ref=e299]: Convidados
+          - spinbutton "Convidados" [ref=e300]
+        - generic [ref=e301]:
+          - generic [ref=e302]: Data prevista
+          - textbox "Data prevista" [ref=e303]
+        - generic [ref=e304]:
+          - generic [ref=e305]: Observações
+          - textbox "Observações" [ref=e306]:
+            - /placeholder: Local, horário, preferências de cardápio...
+        - button "Enviar pedido" [ref=e307] [cursor=pointer]
+  - contentinfo [ref=e308]:
+    - generic [ref=e309]:
+      - link "Barão da Carne - início" [ref=e310] [cursor=pointer]:
+        - /url: "#top"
+        - img "Logo Barão da Carne" [ref=e311]
+        - generic [ref=e312]: Barão da Carne
+      - generic "Links institucionais" [ref=e313]:
+        - link "Serviços" [ref=e314] [cursor=pointer]:
+          - /url: "#solucao"
+        - link "Benefícios" [ref=e315] [cursor=pointer]:
+          - /url: "#beneficios"
+        - link "Contato" [ref=e316] [cursor=pointer]:
+          - /url: "#orcamento"
+        - link "Política de privacidade" [ref=e317] [cursor=pointer]:
+          - /url: "#privacidade"
+        - link "Termos de uso" [ref=e318] [cursor=pointer]:
+          - /url: "#termos"
+      - generic "Redes sociais" [ref=e319]:
+        - link "Instagram" [ref=e320] [cursor=pointer]:
+          - /url: https://www.instagram.com/
+        - link "WhatsApp" [ref=e324] [cursor=pointer]:
+          - /url: https://wa.me/5500000000000
+    - paragraph [ref=e327]: © 2026 Barão da Carne. Todos os direitos reservados.
