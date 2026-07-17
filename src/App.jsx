@@ -21,6 +21,11 @@ import {
   Utensils,
   X,
 } from 'lucide-react';
+import {
+  contactEmailAddress,
+  contactWhatsAppUrl,
+  quoteRequestEmailWorkflow,
+} from './services/quoteRequestEmailWorkflow';
 
 const navItems = [
   { label: 'Solução', href: '#solucao' },
@@ -450,25 +455,52 @@ function Contact() {
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
     setSent(false);
+    setSubmitError('');
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const nextErrors = {};
+    const result = quoteRequestEmailWorkflow.prepare(form);
 
-    if (form.name.trim().length < 2) nextErrors.name = 'Informe seu nome.';
-    if (form.phone.replace(/\D/g, '').length < 10) nextErrors.phone = 'Informe um telefone válido.';
-    if (!form.eventType) nextErrors.eventType = 'Escolha o tipo de evento.';
-    if (!form.guests || Number(form.guests) < 10) nextErrors.guests = 'Informe pelo menos 10 convidados.';
+    setErrors(result.errors);
 
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
+    if (!result.ok) {
+      setSent(false);
+      setSubmitError('');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/quote-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors(data.errors || {});
+        setSent(false);
+        setSubmitError(data.message || 'Não foi possível enviar o pedido agora.');
+        return;
+      }
+
       setSent(true);
+    } catch {
+      setSent(false);
+      setSubmitError('Não foi possível enviar o pedido agora. Verifique sua conexão e tente novamente.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -483,17 +515,17 @@ function Contact() {
             provável e observações sobre local ou cardápio.
           </p>
           <div className="contact-list">
-            <a href="tel:+5500000000000">
+            <a href="tel:+5531988474678">
               <Phone aria-hidden="true" />
-              <span>Telefone a substituir</span>
+              <span>(31) 9 8847-4678</span>
             </a>
-            <a href="mailto:contato@baraodacarne.com.br">
+            <a href={`mailto:${contactEmailAddress}`}>
               <Mail aria-hidden="true" />
-              <span>E-mail a substituir</span>
+              <span>{contactEmailAddress}</span>
             </a>
             <span>
               <MapPin aria-hidden="true" />
-              Cidade/região de atendimento a informar
+              Belo Horizonte e região metropolitana
             </span>
           </div>
         </div>
@@ -550,12 +582,17 @@ function Contact() {
               placeholder="Local, horário, preferências de cardápio..."
             />
           </Field>
-          <button className="button button-primary" type="submit">
-            Enviar pedido
+          <button className="button button-primary" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Enviando...' : 'Enviar pedido'}
           </button>
+          {submitError && (
+            <p className="form-error" role="alert">
+              {submitError}
+            </p>
+          )}
           {sent && (
             <p className="form-success" role="status">
-              Pedido validado. Conecte este formulário ao canal real de atendimento antes de publicar.
+              Pedido enviado com sucesso. Em breve entraremos em contato.
             </p>
           )}
         </form>
@@ -580,10 +617,10 @@ function Footer() {
           <a href="#termos">Termos de uso</a>
         </div>
         <div className="social-links" aria-label="Redes sociais">
-          <a href="https://www.instagram.com/" aria-label="Instagram">
+          <a href="https://www.instagram.com/baraodacarne" target="_blank" rel="noreferrer" aria-label="Instagram">
             <Instagram aria-hidden="true" />
           </a>
-          <a href="https://wa.me/5500000000000" aria-label="WhatsApp">
+          <a href={contactWhatsAppUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp">
             <MessageCircle aria-hidden="true" />
           </a>
         </div>
