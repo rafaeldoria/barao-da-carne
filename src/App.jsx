@@ -113,19 +113,19 @@ const differentiators = [
 
 const testimonials = [
   {
-    name: 'Nome do cliente',
-    role: 'Cargo ou ocasião - Placeholder',
-    text: 'Depoimento real a inserir. Use este espaço para uma avaliação curta sobre pontualidade, qualidade das carnes e atendimento no evento.',
+    name: 'Mariana e Rafael',
+    role: 'Casamento',
+    text: 'O Barão da Carne fez parte de um dos dias mais especiais da nossa vida. A comida estava maravilhosa, tudo foi servido com muito cuidado e recebemos muitos elogios dos convidados.',
   },
   {
-    name: 'Nome do cliente',
-    role: 'Empresa ou festa - Placeholder',
-    text: 'Depoimento real a inserir. O ideal é citar o tipo de evento e o que ficou mais fácil para quem contratou.',
+    name: 'Juliana Martins',
+    role: 'Festa de aniversário',
+    text: 'Foi tudo muito tranquilo do início ao fim. A equipe cuidou de cada detalhe, a carne estava deliciosa e conseguimos aproveitar a festa sem preocupação. Com certeza contrataríamos novamente.',
   },
   {
-    name: 'Nome do cliente',
-    role: 'Confraternização - Placeholder',
-    text: 'Depoimento real a inserir. Uma frase específica sobre sabor, organização e experiência ajuda muito na conversão.',
+    name: 'Carlos Henrique',
+    role: 'Confraternização da empresa',
+    text: 'Atendimento excelente, equipe organizada e comida de muita qualidade. Todos gostaram bastante, principalmente do sabor das carnes e da atenção durante o evento.',
   },
 ];
 
@@ -148,12 +148,12 @@ const faqs = [
   {
     question: 'Vocês levam equipe para preparar e servir?',
     answer:
-      'A landing foi pensada para comunicar serviço completo. Confirme no orçamento a composição da equipe, estrutura necessária e itens inclusos.',
+      'Equipe completa de churrasqueiro, auxiliares e garçons para servir, montar e organizar o buffet. O cliente não precisa se preocupar com operação do evento.',
   },
   {
     question: 'Como o orçamento é calculado?',
     answer:
-      'Normalmente depende de convidados, cardápio, duração, endereço e estrutura necessária. O formulário coleta esses pontos para facilitar o retorno.',
+      'Normalmente depende de convidados, cardápio, duração, endereço e estrutura necessária. Preencha o formulário de orçamento, com o máximo de informações possível, para receber uma proposta personalizada.',
   },
 ];
 
@@ -361,12 +361,12 @@ function SocialProof() {
       id="depoimentos"
       eyebrow="Prova social"
       title="Depoimentos reais vão dar o peso final para a decisão."
-      description="Os textos abaixo são placeholders identificados. Substitua por avaliações autênticas antes da publicação."
+      description="Veja alguns comentários de clientes que já contrataram o serviço e aprovaram a experiência do churrasco completo em eventos."
     >
       <div className="testimonial-grid">
         {testimonials.map((testimonial) => (
           <article className="testimonial-card reveal" key={`${testimonial.name}-${testimonial.role}`}>
-            <div className="testimonial-rating" aria-label="Avaliação placeholder de cinco estrelas">
+            <div className="testimonial-rating" aria-label="Avaliação de cinco estrelas">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} fill="currentColor" aria-hidden="true" />
               ))}

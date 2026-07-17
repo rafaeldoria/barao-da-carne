@@ -207,7 +207,7 @@ button {
   gap: 34px;
   align-items: center;
   min-height: min(760px, calc(100svh - 120px));
-  padding: 54px 0 72px;
+  padding: 54px clamp(18px, 4vw, 48px) 72px;
 }
 
 .hero::before {
@@ -238,7 +238,6 @@ button {
 }
 
 .hero-content {
-  padding-inline-start: clamp(18px, 4vw, 48px);
   color: var(--white);
 }
 
@@ -346,7 +345,6 @@ p {
 .hero-visual {
   position: relative;
   overflow: hidden;
-  margin-inline-end: clamp(18px, 4vw, 48px);
   min-height: 390px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
