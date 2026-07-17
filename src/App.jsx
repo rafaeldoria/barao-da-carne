@@ -31,7 +31,7 @@ const navItems = [
 ];
 
 const visualAssets = {
-  logo: '/barao-da-carne.png',
+  logo: '/logo-barao.webp',
   hero:
     'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1400&q=85',
   buffet:
