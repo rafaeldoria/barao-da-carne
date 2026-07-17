@@ -21,6 +21,11 @@ import {
   Utensils,
   X,
 } from 'lucide-react';
+import {
+  contactEmailAddress,
+  contactWhatsAppUrl,
+  quoteRequestEmailWorkflow,
+} from './services/quoteRequestEmailWorkflow';
 
 const navItems = [
   { label: 'Solução', href: '#solucao' },
@@ -31,7 +36,7 @@ const navItems = [
 ];
 
 const visualAssets = {
-  logo: '/barao-da-carne.png',
+  logo: '/logo-barao.webp',
   hero:
     'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1400&q=85',
   buffet:
@@ -42,23 +47,23 @@ const problems = [
   {
     icon: Clock3,
     title: 'Falta tempo para organizar tudo',
-    text: 'Você escolhe o evento. A equipe cuida do preparo, montagem e ritmo do serviço para que a festa aconteça com tranquilidade.',
+    text: 'Você escolhe o evento em BH ou região. A equipe cuida do preparo, montagem e ritmo do serviço para que a festa aconteça com tranquilidade.',
   },
   {
     icon: UsersRound,
     title: 'Medo de faltar comida ou sobrar demais',
-    text: 'O cardápio é pensado conforme quantidade de convidados, perfil da celebração e tempo de duração.',
+    text: 'O cardápio é pensado conforme quantidade de convidados, perfil da celebração e tempo de duração, sem improviso na compra das carnes.',
   },
   {
     icon: ShieldCheck,
     title: 'Preocupação com qualidade e atendimento',
-    text: 'Carnes, acompanhamentos e operação seguem um planejamento claro para entregar uma experiência consistente.',
+    text: 'Carnes para churrasco, acompanhamentos e operação seguem um planejamento claro para entregar uma experiência consistente.',
   },
 ];
 
 const benefits = [
   'Evento mais leve para quem recebe',
-  'Churrasco servido no ponto certo',
+  'Churrasco BH servido no ponto certo',
   'Buffet completo com acompanhamentos',
   'Equipe preparada para festas e confraternizações',
   'Orçamento ajustado ao tamanho do evento',
@@ -113,19 +118,19 @@ const differentiators = [
 
 const testimonials = [
   {
-    name: 'Nome do cliente',
-    role: 'Cargo ou ocasião - Placeholder',
-    text: 'Depoimento real a inserir. Use este espaço para uma avaliação curta sobre pontualidade, qualidade das carnes e atendimento no evento.',
+    name: 'Mariana e Rafael',
+    role: 'Casamento',
+    text: 'O Barão da Carne fez parte de um dos dias mais especiais da nossa vida. A comida estava maravilhosa, tudo foi servido com muito cuidado e recebemos muitos elogios dos convidados.',
   },
   {
-    name: 'Nome do cliente',
-    role: 'Empresa ou festa - Placeholder',
-    text: 'Depoimento real a inserir. O ideal é citar o tipo de evento e o que ficou mais fácil para quem contratou.',
+    name: 'Juliana Martins',
+    role: 'Festa de aniversário',
+    text: 'Foi tudo muito tranquilo do início ao fim. A equipe cuidou de cada detalhe, a carne estava deliciosa e conseguimos aproveitar a festa sem preocupação. Com certeza contrataríamos novamente.',
   },
   {
-    name: 'Nome do cliente',
-    role: 'Confraternização - Placeholder',
-    text: 'Depoimento real a inserir. Uma frase específica sobre sabor, organização e experiência ajuda muito na conversão.',
+    name: 'Carlos Henrique',
+    role: 'Confraternização da empresa',
+    text: 'Atendimento excelente, equipe organizada e comida de muita qualidade. Todos gostaram bastante, principalmente do sabor das carnes e da atenção durante o evento.',
   },
 ];
 
@@ -133,12 +138,22 @@ const faqs = [
   {
     question: 'O Barão da Carne atende quais tipos de evento?',
     answer:
-      'Festas de aniversário, confraternizações, eventos corporativos, encontros familiares e celebrações em geral. O formato é ajustado ao local, horário e quantidade de pessoas.',
+      'Festas de aniversário, confraternizações, eventos corporativos, encontros familiares e celebrações em geral em Belo Horizonte e região. O formato é ajustado ao local, horário e quantidade de pessoas.',
   },
   {
     question: 'O buffet inclui acompanhamentos?',
     answer:
       'Sim. A proposta é oferecer churrasco e buffet completo. Os itens finais devem ser definidos no orçamento, conforme o perfil do evento.',
+  },
+  {
+    question: 'Atendem quem procura carnes para churrasco em BH?',
+    answer:
+      'Sim. O serviço é uma alternativa para quem quer carnes para churrasco em BH já planejadas, preparadas e servidas no evento, com acompanhamentos e equipe de atendimento.',
+  },
+  {
+    question: 'O serviço substitui comprar carnes separadas para o evento?',
+    answer:
+      'Para quem pesquisou casa de carnes em Belo Horizonte ou carnes para churrasco em BH para abastecer uma festa, o Barão da Carne oferece uma solução com planejamento do cardápio, preparo, buffet e equipe. A venda avulsa de carnes deve ser confirmada diretamente no contato.',
   },
   {
     question: 'Com quanto tempo devo solicitar orçamento?',
@@ -148,12 +163,12 @@ const faqs = [
   {
     question: 'Vocês levam equipe para preparar e servir?',
     answer:
-      'A landing foi pensada para comunicar serviço completo. Confirme no orçamento a composição da equipe, estrutura necessária e itens inclusos.',
+      'Equipe completa de churrasqueiro, auxiliares e garçons para servir, montar e organizar o buffet. O cliente não precisa se preocupar com operação do evento.',
   },
   {
     question: 'Como o orçamento é calculado?',
     answer:
-      'Normalmente depende de convidados, cardápio, duração, endereço e estrutura necessária. O formulário coleta esses pontos para facilitar o retorno.',
+      'Normalmente depende de convidados, cardápio, duração, endereço e estrutura necessária. Preencha o formulário de orçamento, com o máximo de informações possível, para receber uma proposta personalizada.',
   },
 ];
 
@@ -185,7 +200,7 @@ function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Barão da Carne - início">
-        <img src={visualAssets.logo} alt="Logo Barão da Carne" />
+        <img src={visualAssets.logo} alt="Barão da Carne - churrasco e buffet em Belo Horizonte" />
         <span>Barão da Carne</span>
       </a>
 
@@ -221,10 +236,10 @@ function Hero() {
           <Flame aria-hidden="true" />
           Churrasco e buffet para eventos
         </span>
-        <h1>Seu evento com churrasco de verdade, sem preocupação na cozinha.</h1>
+        <h1>Churrasco em Belo Horizonte para eventos sem preocupação na cozinha.</h1>
         <p>
           O Barão da Carne prepara carnes, acompanhamentos e serviço para festas,
-          confraternizações e encontros especiais com organização do início ao fim.
+          confraternizações e encontros especiais em BH e região metropolitana.
         </p>
         <div className="hero-actions">
           <Button href="#orcamento" variant="primary">
@@ -234,12 +249,12 @@ function Hero() {
             Ver como funciona
           </Button>
         </div>
-        <div className="proof-strip" aria-label="Prova social pendente de dados reais">
+        <div className="proof-strip" aria-label="Prova social">
           <div>
-            <strong>Dados reais a inserir</strong>
-            <span>Eventos atendidos, avaliações e cidades</span>
+            <strong>Mais de 100 eventos realizados</strong>
+            <span>Sabor, organização e cuidado para você aproveitar cada momento</span>
           </div>
-          <div className="rating" aria-label="Avaliação placeholder">
+          <div className="rating" aria-label="Avaliação de cinco estrelas">
             {[1, 2, 3, 4, 5].map((star) => (
               <Star key={star} fill="currentColor" aria-hidden="true" />
             ))}
@@ -248,7 +263,11 @@ function Hero() {
       </div>
 
       <div className="hero-visual reveal" style={{ '--delay': '120ms' }}>
-        <img src={visualAssets.hero} alt="Churrasco com carnes assadas e acompanhamentos" />
+        <img
+          src={visualAssets.hero}
+          alt="Churrasco em Belo Horizonte com carnes assadas e acompanhamentos para eventos"
+          fetchPriority="high"
+        />
         <div className="hero-badge">
           <BadgeCheck aria-hidden="true" />
           <span>Buffet completo para celebrar com calma</span>
@@ -266,12 +285,16 @@ function ProblemSolution() {
           <span className="eyebrow">Problema e solução</span>
           <h2>A festa não precisa virar uma lista infinita de preocupações.</h2>
           <p>
-            O serviço foi pensado para quem quer receber bem, servir comida de qualidade
-            e continuar presente no próprio evento.
+            O serviço foi pensado para quem quer receber bem em Belo Horizonte, servir
+            comida de qualidade e continuar presente no próprio evento.
           </p>
         </div>
         <div className="brand-showcase reveal" style={{ '--delay': '120ms' }}>
-          <img src={visualAssets.logo} alt="Logo Barão da Carne em destaque" />
+          <img
+            src={visualAssets.logo}
+            alt="Marca Barão da Carne BH para churrasco e buffet de eventos"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="problem-grid">
@@ -291,8 +314,9 @@ function Benefits() {
           <span className="eyebrow">Benefícios</span>
           <h2>Mais tempo com os convidados. Menos improviso nos bastidores.</h2>
           <p>
-            Churrasco bem planejado ajuda o evento a fluir: a comida chega no tempo
-            certo, o buffet fica organizado e você não precisa coordenar cada detalhe.
+            Churrasco em Belo Horizonte bem planejado ajuda o evento a fluir: a comida
+            chega no tempo certo, o buffet fica organizado e você não precisa coordenar
+            cada detalhe.
           </p>
         </div>
         <div className="benefit-list reveal" style={{ '--delay': '120ms' }}>
@@ -335,13 +359,17 @@ function Differentials() {
     <section className="differentials-band">
       <div className="section-shell split-layout">
         <div className="image-panel reveal">
-          <img src={visualAssets.buffet} alt="Mesa de churrasco com cortes e acompanhamentos" />
+          <img
+            src={visualAssets.buffet}
+            alt="Mesa de buffet de churrasco com cortes de carne e acompanhamentos em BH"
+            loading="lazy"
+          />
         </div>
         <div className="split-copy reveal" style={{ '--delay': '120ms' }}>
           <span className="eyebrow">Diferenciais</span>
           <h2>Um buffet com cara de evento bem cuidado.</h2>
           <p>
-            A proposta combina sabor, montagem e operação para que o churrasco seja
+            A proposta combina sabor, montagem e operação para que o churrasco BH seja
             lembrado pelo convidado e simples para quem contrata.
           </p>
           <div className="differential-grid">
@@ -361,12 +389,12 @@ function SocialProof() {
       id="depoimentos"
       eyebrow="Prova social"
       title="Depoimentos reais vão dar o peso final para a decisão."
-      description="Os textos abaixo são placeholders identificados. Substitua por avaliações autênticas antes da publicação."
+      description="Veja alguns comentários de clientes que já contrataram o serviço e aprovaram a experiência do churrasco completo em eventos."
     >
       <div className="testimonial-grid">
         {testimonials.map((testimonial) => (
           <article className="testimonial-card reveal" key={`${testimonial.name}-${testimonial.role}`}>
-            <div className="testimonial-rating" aria-label="Avaliação placeholder de cinco estrelas">
+            <div className="testimonial-rating" aria-label="Avaliação de cinco estrelas">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} fill="currentColor" aria-hidden="true" />
               ))}
@@ -394,7 +422,7 @@ function FAQ() {
       id="faq"
       eyebrow="Perguntas frequentes"
       title="Respostas para decidir com mais segurança."
-      description="As principais dúvidas antes de pedir um orçamento para churrasco e buffet em eventos."
+      description="As principais dúvidas antes de pedir um orçamento para churrasco e buffet em Belo Horizonte."
     >
       <div className="faq-list">
         {faqs.map((item, index) => {
@@ -428,8 +456,8 @@ function FinalCTA() {
         <span className="eyebrow">Agenda e orçamento</span>
         <h2>Quer servir um churrasco completo sem assumir a operação da festa?</h2>
         <p>
-          Envie os dados do evento e receba uma proposta alinhada ao número de
-          convidados, cardápio desejado e estrutura do local.
+          Envie os dados do evento em BH ou região e receba uma proposta alinhada ao
+          número de convidados, cardápio desejado e estrutura do local.
         </p>
         <Button href="#orcamento" variant="primary">
           Solicitar orçamento
@@ -450,25 +478,52 @@ function Contact() {
   });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
     setSent(false);
+    setSubmitError('');
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const nextErrors = {};
+    const result = quoteRequestEmailWorkflow.prepare(form);
 
-    if (form.name.trim().length < 2) nextErrors.name = 'Informe seu nome.';
-    if (form.phone.replace(/\D/g, '').length < 10) nextErrors.phone = 'Informe um telefone válido.';
-    if (!form.eventType) nextErrors.eventType = 'Escolha o tipo de evento.';
-    if (!form.guests || Number(form.guests) < 10) nextErrors.guests = 'Informe pelo menos 10 convidados.';
+    setErrors(result.errors);
 
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
+    if (!result.ok) {
+      setSent(false);
+      setSubmitError('');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/quote-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors(data.errors || {});
+        setSent(false);
+        setSubmitError(data.message || 'Não foi possível enviar o pedido agora.');
+        return;
+      }
+
       setSent(true);
+    } catch {
+      setSent(false);
+      setSubmitError('Não foi possível enviar o pedido agora. Verifique sua conexão e tente novamente.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -480,20 +535,21 @@ function Contact() {
           <h2>Conte o básico do evento para receber uma proposta mais precisa.</h2>
           <p>
             Quanto mais contexto, melhor o retorno: tipo de evento, convidados, data
-            provável e observações sobre local ou cardápio.
+            provável, bairro/cidade em Belo Horizonte ou região e observações sobre
+            local ou cardápio.
           </p>
           <div className="contact-list">
-            <a href="tel:+5500000000000">
+            <a href="tel:+5531988474678">
               <Phone aria-hidden="true" />
-              <span>Telefone a substituir</span>
+              <span>(31) 9 8847-4678</span>
             </a>
-            <a href="mailto:contato@baraodacarne.com.br">
+            <a href={`mailto:${contactEmailAddress}`}>
               <Mail aria-hidden="true" />
-              <span>E-mail a substituir</span>
+              <span>{contactEmailAddress}</span>
             </a>
             <span>
               <MapPin aria-hidden="true" />
-              Cidade/região de atendimento a informar
+              Belo Horizonte e região metropolitana
             </span>
           </div>
         </div>
@@ -550,12 +606,17 @@ function Contact() {
               placeholder="Local, horário, preferências de cardápio..."
             />
           </Field>
-          <button className="button button-primary" type="submit">
-            Enviar pedido
+          <button className="button button-primary" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Enviando...' : 'Enviar pedido'}
           </button>
+          {submitError && (
+            <p className="form-error" role="alert">
+              {submitError}
+            </p>
+          )}
           {sent && (
             <p className="form-success" role="status">
-              Pedido validado. Conecte este formulário ao canal real de atendimento antes de publicar.
+              Pedido enviado com sucesso. Em breve entraremos em contato.
             </p>
           )}
         </form>
@@ -569,21 +630,19 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-inner">
         <a className="brand footer-brand" href="#top" aria-label="Barão da Carne - início">
-          <img src={visualAssets.logo} alt="Logo Barão da Carne" />
+          <img src={visualAssets.logo} alt="Barão da Carne BH - churrasco e buffet" />
           <span>Barão da Carne</span>
         </a>
         <div className="footer-links" aria-label="Links institucionais">
           <a href="#solucao">Serviços</a>
           <a href="#beneficios">Benefícios</a>
           <a href="#orcamento">Contato</a>
-          <a href="#privacidade">Política de privacidade</a>
-          <a href="#termos">Termos de uso</a>
         </div>
         <div className="social-links" aria-label="Redes sociais">
-          <a href="https://www.instagram.com/" aria-label="Instagram">
+          <a href="https://www.instagram.com/baraodacarne" target="_blank" rel="noreferrer" aria-label="Instagram">
             <Instagram aria-hidden="true" />
           </a>
-          <a href="https://wa.me/5500000000000" aria-label="WhatsApp">
+          <a href={contactWhatsAppUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp">
             <MessageCircle aria-hidden="true" />
           </a>
         </div>
