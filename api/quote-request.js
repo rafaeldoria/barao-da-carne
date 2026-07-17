@@ -22,13 +22,6 @@ export default async function handler(request, response) {
     return response.status(405).json({ ok: false, message: 'Método não permitido.' });
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    return response.status(500).json({
-      ok: false,
-      message: 'Serviço de e-mail não configurado. Defina RESEND_API_KEY na Vercel.',
-    });
-  }
-
   const result = quoteRequestEmailWorkflow.prepare(request.body || {});
 
   if (!result.ok) {
@@ -36,6 +29,13 @@ export default async function handler(request, response) {
       ok: false,
       message: 'Revise os campos destacados.',
       errors: result.errors,
+    });
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    return response.status(500).json({
+      ok: false,
+      message: 'Serviço de e-mail não configurado. Defina RESEND_API_KEY na Vercel.',
     });
   }
 

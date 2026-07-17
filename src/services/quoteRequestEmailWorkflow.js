@@ -2,20 +2,24 @@ export const contactEmailAddress = 'jcabarao@gmail.com';
 
 const whatsappNumber = '5531988474678';
 
+const safeString = (value) => (value == null ? '' : String(value));
+
 class QuoteRequestNormalizer {
-  normalize(form) {
-    const phoneDigits = form.phone.replace(/\D/g, '');
-    const guests = Number(form.guests);
+  normalize(form = {}) {
+    const source = form && typeof form === 'object' ? form : {};
+    const phone = safeString(source.phone).trim();
+    const phoneDigits = phone.replace(/\D/g, '');
+    const guests = Number(source.guests);
 
     return {
-      name: form.name.trim(),
-      phone: form.phone.trim(),
+      name: safeString(source.name).trim(),
+      phone,
       phoneDigits,
       whatsappUrl: phoneDigits ? `https://wa.me/55${phoneDigits.replace(/^55/, '')}` : '',
-      eventType: form.eventType.trim(),
+      eventType: safeString(source.eventType).trim(),
       guests: Number.isFinite(guests) ? guests : 0,
-      date: form.date,
-      message: form.message.trim(),
+      date: safeString(source.date),
+      message: safeString(source.message).trim(),
     };
   }
 }
