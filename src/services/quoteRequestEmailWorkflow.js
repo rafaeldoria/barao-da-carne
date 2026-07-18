@@ -4,14 +4,23 @@ const whatsappNumber = '5531988474678';
 
 const safeString = (value) => (value == null ? '' : String(value));
 
-const formatDatePtBr = (value) => {
+const formatDateDdMmYyyy = (value) => {
   const date = safeString(value);
-  const match = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const isoDate = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 
-  if (!match) return date;
+  if (isoDate) {
+    const [, year, month, day] = isoDate;
+    return `${day}-${month}-${year}`;
+  }
 
-  const [, year, month, day] = match;
-  return `${day}/${month}/${year}`;
+  const localDate = date.match(/^(\d{2})[/-](\d{2})[/-](\d{4})$/);
+
+  if (localDate) {
+    const [, day, month, year] = localDate;
+    return `${day}-${month}-${year}`;
+  }
+
+  return date;
 };
 
 class QuoteRequestNormalizer {
@@ -49,7 +58,7 @@ class QuoteRequestValidator {
 
 class QuoteEmailTemplate {
   build(request) {
-    const eventDate = request.date ? formatDatePtBr(request.date) : 'Não informada';
+    const eventDate = request.date ? formatDateDdMmYyyy(request.date) : 'Não informada';
     const notes = request.message || 'Sem observações adicionais.';
 
     const subject = `Novo pedido de orçamento - ${request.eventType} - ${request.name}`;
