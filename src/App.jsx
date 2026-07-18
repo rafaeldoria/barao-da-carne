@@ -592,6 +592,7 @@ function Contact() {
               value={form.name}
               onChange={updateField}
               autoComplete="name"
+              maxLength="80"
               placeholder="Seu nome"
             />
           </Field>
@@ -602,6 +603,7 @@ function Contact() {
               onChange={updateField}
               autoComplete="tel"
               inputMode="tel"
+              maxLength="20"
               placeholder="(00) 00000-0000"
             />
           </Field>
@@ -622,6 +624,7 @@ function Contact() {
               onChange={updateField}
               type="number"
               min="10"
+              max="9999"
               placeholder="Ex.: 80"
             />
           </Field>
@@ -642,6 +645,7 @@ function Contact() {
               value={form.message}
               onChange={updateField}
               rows="4"
+              maxLength="800"
               placeholder="Local, horário, preferências de cardápio..."
             />
           </Field>

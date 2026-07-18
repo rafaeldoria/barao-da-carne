@@ -4,6 +4,43 @@ const whatsappNumber = '5531988474678';
 
 const safeString = (value) => (value == null ? '' : String(value));
 
+const allowedEventTypes = new Set([
+  'Aniversário',
+  'Confraternização',
+  'Evento corporativo',
+  'Casamento ou noivado',
+  'Outro',
+]);
+
+const fieldLimits = {
+  name: 80,
+  phone: 20,
+  eventType: 40,
+  date: 10,
+  message: 800,
+};
+
+const sanitizeText = (value, { maxLength, allowLineBreaks = false } = {}) => {
+  let text = safeString(value).normalize('NFKC');
+
+  text = allowLineBreaks
+    ? text.replace(/\r\n?/g, '\n').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+    : text.replace(/[\u0000-\u001F\u007F]/g, ' ');
+
+  text = allowLineBreaks
+    ? text
+        .split('\n')
+        .map((line) => line.replace(/\s+/g, ' ').trim())
+        .join('\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim()
+    : text.replace(/\s+/g, ' ').trim();
+
+  return maxLength ? text.slice(0, maxLength) : text;
+};
+
+const sanitizeEmailSubject = (value) => sanitizeText(value, { maxLength: 160 }).replace(/[<>]/g, '');
+
 const formatDateDdMmYyyy = (value) => {
   const date = safeString(value);
   const isoDate = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -26,19 +63,23 @@ const formatDateDdMmYyyy = (value) => {
 class QuoteRequestNormalizer {
   normalize(form = {}) {
     const source = form && typeof form === 'object' ? form : {};
-    const phone = safeString(source.phone).trim();
+    const eventType = sanitizeText(source.eventType, { maxLength: fieldLimits.eventType });
+    const phone = sanitizeText(source.phone, { maxLength: fieldLimits.phone });
     const phoneDigits = phone.replace(/\D/g, '');
     const guests = Number(source.guests);
 
     return {
-      name: safeString(source.name).trim(),
+      name: sanitizeText(source.name, { maxLength: fieldLimits.name }),
       phone,
       phoneDigits,
       whatsappUrl: phoneDigits ? `https://wa.me/55${phoneDigits.replace(/^55/, '')}` : '',
-      eventType: safeString(source.eventType).trim(),
+      eventType: allowedEventTypes.has(eventType) ? eventType : '',
       guests: Number.isFinite(guests) ? guests : 0,
-      date: safeString(source.date),
-      message: safeString(source.message).trim(),
+      date: sanitizeText(source.date, { maxLength: fieldLimits.date }),
+      message: sanitizeText(source.message, {
+        maxLength: fieldLimits.message,
+        allowLineBreaks: true,
+      }),
     };
   }
 }
@@ -51,6 +92,7 @@ class QuoteRequestValidator {
     if (request.phoneDigits.length < 10) errors.phone = 'Informe um telefone válido.';
     if (!request.eventType) errors.eventType = 'Escolha o tipo de evento.';
     if (request.guests < 10) errors.guests = 'Informe pelo menos 10 convidados.';
+    if (request.guests > 9999) errors.guests = 'Informe uma quantidade válida de convidados.';
 
     return errors;
   }
@@ -61,7 +103,7 @@ class QuoteEmailTemplate {
     const eventDate = request.date ? formatDateDdMmYyyy(request.date) : 'Não informada';
     const notes = request.message || 'Sem observações adicionais.';
 
-    const subject = `Novo pedido de orçamento - ${request.eventType} - ${request.name}`;
+    const subject = sanitizeEmailSubject(`Novo pedido de orçamento - ${request.eventType} - ${request.name}`);
     const text = [
       'Novo pedido de orçamento pelo site Barão da Carne',
       '',
