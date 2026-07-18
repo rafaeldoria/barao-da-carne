@@ -66,9 +66,9 @@ const formatQuoteDate = (value) => {
   const digits = value.replace(/\D/g, '').slice(0, 8);
 
   if (digits.length <= 2) return digits;
-  if (digits.length <= 4) return `${digits.slice(0, 2)}-${digits.slice(2)}`;
+  if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
 
-  return `${digits.slice(0, 2)}-${digits.slice(2, 4)}-${digits.slice(4)}`;
+  return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
 };
 
 const problems = [
@@ -633,7 +633,7 @@ function Contact() {
               autoComplete="off"
               inputMode="numeric"
               maxLength="10"
-              placeholder="DD-MM-AAAA"
+              placeholder="DD/MM/AAAA"
             />
           </Field>
           <Field label="Observações">

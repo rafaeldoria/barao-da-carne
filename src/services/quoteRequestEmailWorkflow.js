@@ -10,14 +10,14 @@ const formatDateDdMmYyyy = (value) => {
 
   if (isoDate) {
     const [, year, month, day] = isoDate;
-    return `${day}-${month}-${year}`;
+    return `${day}/${month}/${year}`;
   }
 
   const localDate = date.match(/^(\d{2})[/-](\d{2})[/-](\d{4})$/);
 
   if (localDate) {
     const [, day, month, year] = localDate;
-    return `${day}-${month}-${year}`;
+    return `${day}/${month}/${year}`;
   }
 
   return date;
