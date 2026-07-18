@@ -43,6 +43,25 @@ const visualAssets = {
     'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1100&q=85',
 };
 
+const initialQuoteForm = {
+  name: '',
+  phone: '',
+  eventType: '',
+  guests: '',
+  date: '',
+  message: '',
+};
+
+const formatBrazilianPhone = (value) => {
+  const digits = value.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '').slice(0, 11);
+
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+};
+
 const problems = [
   {
     icon: Clock3,
@@ -468,14 +487,7 @@ function FinalCTA() {
 }
 
 function Contact() {
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    eventType: '',
-    guests: '',
-    date: '',
-    message: '',
-  });
+  const [form, setForm] = useState(initialQuoteForm);
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -483,7 +495,10 @@ function Contact() {
 
   const updateField = (event) => {
     const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
+    setForm((current) => ({
+      ...current,
+      [name]: name === 'phone' ? formatBrazilianPhone(value) : value,
+    }));
     setSent(false);
     setSubmitError('');
   };
@@ -519,6 +534,8 @@ function Contact() {
       }
 
       setSent(true);
+      setErrors({});
+      setForm(initialQuoteForm);
     } catch {
       setSent(false);
       setSubmitError('Não foi possível enviar o pedido agora. Verifique sua conexão e tente novamente.');
